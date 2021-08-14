@@ -35,11 +35,4 @@
 
     countries.innerHTML = "<span style='" + divStyle + "'>Ship from " + innerContent + "</span>";
     document.body.appendChild(countries);
-
-
-    Object.keys(countriesAssociative).forEach(function(key) {
-        if (window.location.href.includes("shipFromCountry=" + countriesAssociative[key])) {
-            console.log("frantici utocia na " + key);
-        }
-    });
 })();
