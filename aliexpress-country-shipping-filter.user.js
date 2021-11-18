@@ -7,6 +7,7 @@
 // @match        *://*.aliexpress.com/*SearchText=*
 // @match        *://*.aliexpress.com/w/*
 // @match        *://*.aliexpress.com/category/*
+// @match        *://*.aliexpress.com/*/category/*
 // @icon         https://www.google.com/s2/favicons?domain=aliexpress.com
 // @grant        none
 // ==/UserScript==
