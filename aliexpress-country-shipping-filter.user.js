@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AliExpress country shipping filter
 // @namespace    pk-scripts
-// @version      0.2
+// @version      0.3
 // @description  try to take over the AliExpress!
 // @author       pKajan
 // @match        *://*.aliexpress.com/*SearchText=*
@@ -30,7 +30,7 @@
         return "";
     }
 
-    var countriesAssociative = { 'Poland': 'PL', 'France': 'FR', 'Czech': 'CZ', 'Spain': 'ES', 'Italy': 'IT', 'Germany': 'DE', 'Belgium': 'BE', 'United Kingdom': 'UK' };
+    var countriesAssociative = { 'Poland': 'PL', 'France': 'FR', 'Czech': 'CZ', 'Spain': 'ES', 'Italy': 'IT', 'Germany': 'DE', 'Belgium': 'BE', 'United Kingdom': 'UK', 'China': 'CN' };
     var countries = document.createElement("div");
 
     var innerContent = "";
