@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AliExpress country shipping filter
 // @namespace    pk-scripts
-// @version      0.3
+// @version      0.4
 // @description  try to take over the AliExpress!
 // @author       pKajan
 // @match        *://*.aliexpress.com/*SearchText=*
@@ -10,6 +10,8 @@
 // @match        *://*.aliexpress.com/*/category/*
 // @icon         https://www.google.com/s2/favicons?domain=aliexpress.com
 // @grant        window.onurlchange
+// @downloadURL  https://github.com/pkajan/AliExpress-country-shipping-filter/raw/main/aliexpress-country-shipping-filter.user.js
+// @updateURL    https://github.com/pkajan/AliExpress-country-shipping-filter/raw/main/aliexpress-country-shipping-filter.user.js
 // ==/UserScript==
 
 (function() {
