@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AliExpress country shipping filter
 // @namespace    pk-scripts
-// @version      0.5
+// @version      0.6
 // @description  try to take over the AliExpress!
 // @author       pKajan
 // @match        *://*.aliexpress.com/*SearchText=*
@@ -32,7 +32,7 @@
         return "";
     }
 
-    var countriesAssociative = { 'Poland': 'PL', 'France': 'FR', 'Czech': 'CZ', 'Spain': 'ES', 'Italy': 'IT', 'Germany': 'DE', 'Belgium': 'BE', 'United Kingdom': 'UK', 'China': 'CN' };
+    var countriesAssociative = { 'Poland': 'PL', 'France': 'FR', 'Czech': 'CZ', 'Spain': 'ES', 'Italy': 'IT', 'Germany': 'DE', 'Belgium': 'BE', 'United Kingdom': 'UK', 'Turkey': 'TR', 'China': 'CN' };
     var countries = document.createElement("div");
 
     var innerContent = "";
@@ -42,18 +42,13 @@
 
     Object.keys(countriesAssociative).forEach(function (key) {
         var style = aStyle;
-        if (window.location.href.includes("shipFromCountry=" + countriesAssociative[key])) {
+        if (window.location.href.includes("shpf_co=" + countriesAssociative[key])) {
             console.log("DEPO changed to " + key);
             style = bStyle;
         }
-        innerContent += "|<a style=\"" + style + "\" href=\"javascript:(function(){ document.cookie = 'customDEPO=" + countriesAssociative[key] + "'; var urlParams = new URLSearchParams(window.location.search);urlParams.set('shipFromCountry', '" + countriesAssociative[key] + "');window.location.search = urlParams; })();\"> " + key + " </a>|";
+        innerContent += "|<a style=\"" + style + "\" href=\"javascript:(function(){ document.cookie = 'customDEPO=" + countriesAssociative[key] + "'; var urlParams = new URLSearchParams(window.location.search);urlParams.set('shpf_co', '" + countriesAssociative[key] + "');window.location.search = urlParams; })();\"> " + key + " </a>|";
     });
 
-    //combined delivery
-    var CDYES = "<a href=\"javascript:(function(){ document.cookie = 'CombinedDeliverySelect=n';var urlParams2 = new URLSearchParams(window.location.search);urlParams2.set('isCombinedDelivery', 'n');window.location.search = urlParams2; })()\">YES</a>";
-    var CDNO = "<a href=\"javascript:(function(){ document.cookie = 'CombinedDeliverySelect=y';var urlParams2 = new URLSearchParams(window.location.search);urlParams2.set('isCombinedDelivery', 'y');window.location.search = urlParams2; })()\">NO</a>";
-    var CDSelected = (new URLSearchParams(window.location.search).get("isCombinedDelivery") == "y") ? CDYES : CDNO;
-    innerContent += "<br>Combined Delivery " + CDSelected;
     countries.innerHTML = "<span style='" + divStyle + "'>Ship from " + innerContent + "</span>";
     document.body.appendChild(countries);
     ///////////////////////////////////////////////////////////////////////
@@ -62,8 +57,7 @@
         window.addEventListener('urlchange', (info) => {
             console.log(info.url);
             var urlParams = new URLSearchParams(window.location.search);
-            urlParams.set('shipFromCountry', getCookie("customDEPO"));
-            urlParams.set('isCombinedDelivery', getCookie("CombinedDeliverySelect"));
+            urlParams.set('shpf_co', getCookie("customDEPO"));
             window.location.search = urlParams;
             console.log("DEPO change to " + getCookie("customDEPO"));
         });
